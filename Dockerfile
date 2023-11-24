@@ -9,8 +9,6 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 FROM openjdk:17
-COPY --from=build /app/target/user-email-0.0.1-SNAPSHOT.jar /app/user-email.jar
+COPY --from=build /app/target/email-user-0.0.1-SNAPSHOT.jar /app/email-user.jar
 
-EXPOSE 8080
-
-CMD ["java", "-jar", "/app/user-email.jar"]
+CMD ["java", "-jar", "/app/email-user.jar"]
