@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  email-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+      - mailhog
+    ports:
+      - "8080:8080"
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
